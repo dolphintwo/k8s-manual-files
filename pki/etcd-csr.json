@@ -1,16 +1,14 @@
 {
-  "CN": "etcd",
-  "key": {
-    "algo": "rsa",
-    "size": 2048
-  },
-  "names": [
-    {
-      "C": "TW",
-      "ST": "Taipei",
-      "L": "Taipei",
-      "O": "etcd",
-      "OU": "Etcd Security"
-    }
-  ]
+    "CN": "etcd",
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [{
+        "C": "CN",
+        "ST": "BeiJing",
+        "L": "BeiJing",
+        "O": "etcd",
+        "OU": "Etcd Security"
+    }]
 }
