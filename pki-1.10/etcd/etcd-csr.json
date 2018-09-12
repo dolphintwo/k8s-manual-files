@@ -1,0 +1,20 @@
+{
+    "CN": "etcd",
+    "hosts": [
+        "10.26.8.100",
+        "10.26.8.101",
+        "10.26.8.102",
+        "127.0.0.1"
+    ],
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [{
+        "C": "CN",
+        "ST": "ShangHai",
+        "L": "ShangHai",
+        "O": "etcd",
+        "OU": "Etcd Security"
+    }]
+}
