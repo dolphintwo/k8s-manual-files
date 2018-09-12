@@ -1,13 +1,22 @@
 ## This is for k8s 1.10 setup
 
+> 自签TLS证书
+
+|组件|使用证书|所需文件|
+|---|-------|-------|
+|etcd|ca.pem<br>etcd.pem<br>etcd-key.pem|ca-config.json<br>ca-csr.json<br>etcd-csr.json|
+|kubectl|ca.pem<br>admin.pem<br>admin-key.pem|admin-csr.json|
+|kubelet|ca.pem<br>ca-key.pem||
+|kube-apiserver|ca.pem<br>server.pem<br>server-key.pem|server-csr.json|
+|kube-proxy|ca.pem<br>kube-proxy.pem<br>kube-proxy-key.pem|kube-proxy-csr.json|
 ### ETCD
-> 参数约定
+#### 参数约定
 > K8S_DIR=/etc/kubernetes
 > PKI_DIR=${K8S_DIR}/pki
 > ETCD_SSL=/etc/etcd/ssl
 > MANIFESTS_DIR=/etc/kubernetes/manifests/
 > CFSSL_URL="https://pkg.cfssl.org/R1.2"
-
+#### 生成证书
 ```
 mkdir -p ${ETCD_SSL}
 
@@ -33,3 +42,9 @@ for NODE in "${otherMaster[@]}"; do
     done
   done
 ```
+
+### Admin
+
+### kube-proxy
+
+### server
