@@ -1,0 +1,47 @@
+[Unit]
+Description=Kubernetes API Server
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/kube-apiserver \
+  --enable-admission-plugins=Initializers,NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota \
+  --anonymous-auth=false \
+  --experimental-encryption-provider-config=/etc/kubernetes/encryption-config.yaml \
+  --advertise-address=10.26.8.100 \
+  --bind-address=10.26.8.100 \
+  --authorization-mode=Node,RBAC \
+  --runtime-config=api/all \
+  --enable-bootstrap-token-auth \
+  --service-cluster-ip-range=10.254.0.0/16 \
+  --service-node-port-range=30000-33000 \
+  --tls-cert-file=/etc/k8s/ssl/server.pem \
+  --tls-private-key-file=/etc/k8s/ssl/server-key.pem \
+  --client-ca-file=/etc/k8s/ssl/ca.pem \
+  --kubelet-client-certificate=/etc/k8s/ssl/server.pem \
+  --kubelet-client-key=/etc/k8s/ssl/server-key.pem \
+  --service-account-key-file=/etc/k8s/ssl/ca-key.pem \
+  --etcd-cafile=/etc/etcd/ssl/ca.pem \
+  --etcd-certfile=/etc/etcd/ssl/etcd.pem \
+  --etcd-keyfile=/etc/etcd/ssl/etcd-key.pem \
+  --etcd-servers=https://10.26.8.100:2379,https://10.26.8.101:2379,https://10.26.8.102:2379 \
+  --enable-swagger-ui=true \
+  --allow-privileged=true \
+  --apiserver-count=3 \
+  --audit-log-maxage=30 \
+  --audit-log-maxbackup=3 \
+  --audit-log-maxsize=100 \
+  --audit-log-path=/var/log/kube-apiserver-audit.log \
+  --event-ttl=1h \
+  --alsologtostderr=true \
+  --logtostderr=true \
+  --log-dir=/var/log/kubernetes \
+  --v=4
+Restart=on-failure
+RestartSec=5
+Type=notify
+#User=k8s
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

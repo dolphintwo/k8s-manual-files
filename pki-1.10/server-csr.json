@@ -5,6 +5,7 @@
         "10.26.8.100",
         "10.26.8.101",
         "10.26.8.102",
+        "10.254.0.1",
         "kubernetes",
         "kubernetes.default",
         "kubernetes.default.svc",
