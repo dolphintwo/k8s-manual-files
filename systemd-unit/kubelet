@@ -1,0 +1,8 @@
+KUBELET_OPTS="--logtostderr=true \
+--v=4 \
+--hostname-override=k8s-worker-1 \
+--kubeconfig=/root/k8s/kubernetes/cfg/kubelet.kubeconfig \
+--bootstrap-kubeconfig=/root/k8s/kubernetes/cfg/bootstrap.kubeconfig \
+--config=/root/k8s/kubernetes/cfg/kubelet.config \
+--cert-dir=/root/k8s/kubernetes/ssl \
+--pod-infra-container-image=gcr.io/google-containers/pause-amd64:3.0"

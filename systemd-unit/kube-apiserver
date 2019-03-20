@@ -1,0 +1,21 @@
+KUBE_APISERVER_OPTS="--etcd-servers=https://10.8.184.111:2379,https://10.8.9.111:2379,https://10.8.7.93:2379 \
+--bind-address=10.8.184.111 \
+--secure-port=6443 \
+--advertise-address=10.8.184.111 \
+--allow-privileged=true \
+--service-cluster-ip-range=10.0.0.0/16 \
+--enable-admission-plugins=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota,NodeRestriction \
+--authorization-mode=RBAC,Node \
+--enable-bootstrap-token-auth \
+--token-auth-file=/root/k8s/kubernetes/cfg/token.csv \
+--service-node-port-range=30000-35000 \
+--tls-cert-file=/root/k8s/kubernetes/ssl/server.pem  \
+--tls-private-key-file=/root/k8s/kubernetes/ssl/server-key.pem \
+--client-ca-file=/root/k8s/kubernetes/ssl/ca.pem \
+--service-account-key-file=/root/k8s/kubernetes/ssl/ca-key.pem \
+--etcd-cafile=/root/k8s/etcd/ssl/ca.pem \
+--etcd-certfile=/root/k8s/etcd/ssl/server.pem \
+--etcd-keyfile=/root/k8s/etcd/ssl/server-key.pem \
+--logtostderr=true \
+--log-dir=/var/log/kubernetes/apiserver \
+--v=4 1>>/var/log/kubernetes/apiserver/kube-apiserver.log 2>&1"
