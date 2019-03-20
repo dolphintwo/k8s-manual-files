@@ -8,7 +8,7 @@
         "C": "CN",
         "ST": "ShangHai",
         "L": "ShangHai",
-        "O": "etcd",
-        "OU": "Etcd Security"
+        "O": "Kubernetes",
+        "OU": "Kubernetes"
     }]
 }
