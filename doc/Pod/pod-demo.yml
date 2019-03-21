@@ -1,0 +1,21 @@
+# 仅作为Demo
+apiVersion: v1
+kind: Pod
+metadata:
+  name: Pod-Demo
+spec:
+  nodeSelector:
+   disktype: ssd
+  hostAliases:
+  - ip: "10.1.2.3"
+    hostnames:
+    - "foo.remote"
+    - "bar.remote"
+  shareProcessNamespace: true
+  containers:
+  - name: nginx
+    image: nginx
+  - name: shell
+    image: busybox
+    stdin: true
+    tty: true
