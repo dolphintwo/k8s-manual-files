@@ -65,6 +65,12 @@ rook-ceph-osd-prepare-mynode-ftt57     0/1       Completed   0          1m
 
 ### 文件存储
 
+## 测试
+
+```shell
+kubectl run -i --tty --image busybox dns-test --restart=Never --rm /bin/sh
+```
+
 ## Ceph Dashboard
 
 Ceph有一个仪表板，您可以在其中查看群集的状态。有关详细信息，请参阅仪表板指南。
