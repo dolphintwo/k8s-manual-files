@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfspv4-mysql
+  labels:
+    pv: nfspv4-mysql
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /data/mysql
+    server: 172.20.0.47
+  mountOptions:
+    - hard
+    - nolock
+    - nfsvers=4
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+     name: mysql-pvc
+spec:
+     accessModes:
+       - ReadWriteOnce
+     resources:
+       requests:
+         storage: 20Gi
+     selector:
+       matchLabels:
+         pv: nfspv4-mysql
